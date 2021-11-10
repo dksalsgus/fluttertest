@@ -15,9 +15,25 @@ void main() => runApp(new MyApp());
 /**
  * StatelessWidget 상속
  */
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
   void answerQuestion() {
-    print('Answer 1 chosen');
+    /**
+     * 상태 set해주는 메소드
+     */
+    setState(() {
+      questionIndex = questionIndex + 1;
+      print(questionIndex);
+      if (questionIndex > 1) {
+        questionIndex = 0;
+      }
+    });
   }
 
   @override
@@ -35,7 +51,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           // Column은 열로 배치 Row 행으로 배치
           children: <Widget>[
-            Text('The Question!'),
+            Text(questions[questionIndex]),
             ElevatedButton(
               child: Text('Answer 1'),
               onPressed:
