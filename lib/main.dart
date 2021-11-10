@@ -21,24 +21,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     /**
      * 상태 set해주는 메소드
      */
     setState(() {
-      questionIndex = questionIndex + 1;
-      print(questionIndex);
-      if (questionIndex > 1) {
-        questionIndex = 0;
+      _questionIndex = _questionIndex + 1;
+      print(_questionIndex);
+      if (_questionIndex > 1) {
+        _questionIndex = 0;
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    var _questions = [
       '가장 좋아하는 색깔',
       '가장 좋아하는 동물',
     ];
@@ -51,11 +51,11 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           // Column은 열로 배치 Row 행으로 배치
           children: <Widget>[
-            Text(questions[questionIndex]),
+            Text(_questions[_questionIndex]),
             ElevatedButton(
               child: Text('Answer 1'),
               onPressed:
-                  answerQuestion, // answerQuestion()는 바로 실행되기 떄문에 answerQuestion의 포인터만 onPressed에 준다
+                  _answerQuestion, // answerQuestion()는 바로 실행되기 떄문에 answerQuestion의 포인터만 onPressed에 준다
             ),
             ElevatedButton(
               child: Text('Answer 2'),
