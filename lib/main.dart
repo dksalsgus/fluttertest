@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/question.dart';
 
 /**
  * 메인 함수 = flutter 시작시 실행
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           // Column은 열로 배치 Row 행으로 배치
           children: <Widget>[
-            Text(_questions[_questionIndex]),
+            Question(_questions[_questionIndex]),
             ElevatedButton(
               child: Text('Answer 1'),
               onPressed:
