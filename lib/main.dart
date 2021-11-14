@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/answer.dart';
 import 'package:flutter_complete_guide/question.dart';
+import 'package:flutter/material.dart';
 
 /**
  * 메인 함수 = flutter 시작시 실행
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _questionIndex = _questionIndex + 1;
       print(_questionIndex);
-      if (_questionIndex > 1) {
+      if (_questionIndex > 2) {
         _questionIndex = 0;
       }
     });
@@ -39,9 +40,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var _questions = [
-      '가장 좋아하는 색깔',
-      '가장 좋아하는 동물',
+    var questions = [
+      {
+        'questionText': '가장 좋아하는 색깔',
+        'answers': ['Black', 'Red', 'Green', 'White']
+      },
+      {
+        'questionText': '가장 좋아하는 동물',
+        'answers': ['토끼', '뱀', '코끼리', '사자']
+      },
+      {
+        'questionText': '가장 좋아하는 지도자',
+        'answers': ['Max', 'Max', 'Max', 'Max']
+      },
     ];
     return MaterialApp(
       // Scaffold 기본 UI 제공
@@ -52,21 +63,25 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           // Column은 열로 배치 Row 행으로 배치
           children: <Widget>[
-            Question(_questions[_questionIndex]),
-            ElevatedButton(
-              child: Text('Answer 1'),
-              onPressed:
-                  _answerQuestion, // answerQuestion()는 바로 실행되기 떄문에 answerQuestion의 포인터만 onPressed에 준다
-            ),
-            ElevatedButton(
-              child: Text('Answer 2'),
-              onPressed: () => print('Answer 2 chosen!'), // 익명함수
-            ),
-            ElevatedButton(
-                child: Text('Answer 3'),
-                onPressed: () {
-                  print('Answer 3 chosen!'); // 익명함수
-                }),
+            Question(questions[_questionIndex]['questionText']),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList(),
+            // ElevatedButton(
+            //   child: Text('Answer 1'),
+            //   onPressed:
+            //       _answerQuestion, // answerQuestion()는 바로 실행되기 떄문에 answerQuestion의 포인터만 onPressed에 준다
+            // ),
+            // ElevatedButton(
+            //   child: Text('Answer 2'),
+            //   onPressed: () => print('Answer 2 chosen!'), // 익명함수
+            // ),
+            // ElevatedButton(
+            //     child: Text('Answer 3'),
+            //     onPressed: () {
+            //       print('Answer 3 chosen!'); // 익명함수
+            //     }),
           ],
         ),
       ),
