@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         'questionText': '가장 좋아하는 색깔',
         'answers': ['Black', 'Red', 'Green', 'White']
@@ -68,20 +68,6 @@ class _MyAppState extends State<MyApp> {
                 .map((answer) {
               return Answer(_answerQuestion, answer);
             }).toList(),
-            // ElevatedButton(
-            //   child: Text('Answer 1'),
-            //   onPressed:
-            //       _answerQuestion, // answerQuestion()는 바로 실행되기 떄문에 answerQuestion의 포인터만 onPressed에 준다
-            // ),
-            // ElevatedButton(
-            //   child: Text('Answer 2'),
-            //   onPressed: () => print('Answer 2 chosen!'), // 익명함수
-            // ),
-            // ElevatedButton(
-            //     child: Text('Answer 3'),
-            //     onPressed: () {
-            //       print('Answer 3 chosen!'); // 익명함수
-            //     }),
           ],
         ),
       ),
